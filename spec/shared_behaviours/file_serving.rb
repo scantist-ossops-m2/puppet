@@ -9,9 +9,7 @@ describe "Puppet::FileServing::Files", :shared => true do
 
     # It appears that the mocking somehow interferes with the caching subsystem.
     # This mock somehow causes another terminus to get generated.
-    term = @indirection.terminus(:rest)
-    @indirection.stubs(:terminus).with(:rest).returns term
-    term.expects(:find)
+    @indirection.terminus(:rest).expects(:find)
     @test_class.find(uri)
   end
 
